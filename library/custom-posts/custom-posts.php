@@ -1,6 +1,7 @@
 <?php
 
 //All custom posts
+load_template( SP_BASE_DIR . 'library/custom-posts/cp-home-slider.php' );
 load_template( SP_BASE_DIR . 'library/custom-posts/cp-team.php' );
 load_template( SP_BASE_DIR . 'library/custom-posts/cp-testimonial.php' );
 load_template( SP_BASE_DIR . 'library/custom-posts/cp-gallery.php' );

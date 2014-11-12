@@ -82,7 +82,7 @@
                     animationLoop: true,            //Boolean: Should the animation loop? If false, directionNav will received "disable" classes at either end
                     pauseOnAction: true,            //Boolean: Pause the slideshow when interacting with control elements, highly recommended.
                     pauseOnHover: true,            //Boolean: Pause the slideshow when hovering over slider, then resume when no longer hovering
-                    controlNav: false, //paging control of each slide
+                    //controlNav: false, //paging control of each slide
                     before: function(slider) {
                         $('.flex-caption').delay(100).fadeOut(100);
                     },
@@ -95,13 +95,26 @@
 
         <div id="home-slider" class="flexslider">
             <ul class="slides">
+            <?php
+                //Start the loop
+                $args = array( 'posts_per_page' => 5, 'post_type' => 'home_slider' );
+
+                $post_slides = get_posts( $args );
+                foreach ($post_slides as $post ) : setup_postdata( $post ); 
+                    $learn_more_btn = get_post_meta( $post->ID, 'sp_slide_btn_name', true); 
+                    $learn_more_link = get_post_meta( $post->ID, 'sp_slide_btn_url', true); 
+                    $thumb_url = sp_post_thumbnail('large');
+                    $image_url = aq_resize( $thumb_url, '960', '425', true);
+            ?>
                 <li>
-                    <img src="<?php echo SP_ASSETS_THEME; ?>images/demo/home-slide-1.jpg">
+                    <img src="<?php echo $image_url; ?>">
                     <div class="flex-caption clearfix">
-                        <p>Advance placement agency of giving Cambodia workers a rewarding overseas employment</p>
-                        <a class="learn-more" href="#">Learn More</a>
+                        <?php the_content(); ?>
+                        <a class="learn-more" href="<?php echo $learn_more_link; ?>"><?php echo $learn_more_btn; ?></a>
                     </div>
                 </li>
-                <li><img src="<?php echo SP_ASSETS_THEME; ?>images/demo/home-slide-2.jpg"></li>
+                    
+            <?php endforeach;
+            wp_reset_postdata();?>   
             </ul>
         </div> <!-- /#home-slider -->

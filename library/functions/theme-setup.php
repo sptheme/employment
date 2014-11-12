@@ -36,7 +36,7 @@ if( !function_exists('sp_theme_setup') )
 	
 		// Add suport for post thumbnails and set default sizes
 		add_theme_support( 'post-thumbnails' );
-		//add_image_size('post-slider', 720, 432, true ); // base size 1280x768
+		//add_image_size('post-slider', 960, 425, true ); // base size 1280x768
 		//add_image_size('thumb-medium', 200, 120, true ); // base size 1240x768
 
 		// And HTML5 support

@@ -56,51 +56,33 @@ $page_options = array(
 	)
 );
 
-/*$post_options = array(
-	'id'          => 'post-options',
-	'title'       => 'Post Options',
+/* ---------------------------------------------------------------------- */
+/*	Home Sliders post type
+/* ---------------------------------------------------------------------- */
+$post_type_home_slider = array(
+	'id'          => 'home-slide-setting',
+	'title'       => 'Slide meta',
 	'desc'        => '',
-	'pages'       => array( 'post' ),
+	'pages'       => array( 'home_slider' ),
 	'context'     => 'normal',
 	'priority'    => 'high',
 	'fields'      => array(
 		array(
-			'label'		=> 'Primary Sidebar',
-			'id'		=> $prefix . 'sidebar_primary',
-			'type'		=> 'sidebar-select',
-			'desc'		=> 'Overrides default'
+			'label'		=> 'Link button',
+			'id'		=> $prefix . 'slide_btn_name',
+			'type'		=> 'text',
+			'std'		=> '',
+			'desc'		=> 'Name of button link e.g: Learn more'
 		),
 		array(
-			'label'		=> 'Layout',
-			'id'		=> $prefix . 'layout',
-			'type'		=> 'radio-image',
-			'desc'		=> 'Overrides the default layout option',
-			'std'		=> 'inherit',
-			'choices'	=> array(
-				array(
-					'value'		=> 'inherit',
-					'label'		=> 'Inherit Layout',
-					'src'		=> SP_ASSETS_ADMIN . 'images/layout-off.png'
-				),
-				array(
-					'value'		=> 'col-1c',
-					'label'		=> '1 Column',
-					'src'		=> SP_ASSETS_ADMIN . 'images/col-1c.png'
-				),
-				array(
-					'value'		=> 'col-2cl',
-					'label'		=> '2 Column Left',
-					'src'		=> SP_ASSETS_ADMIN . 'images/col-2cl.png'
-				),
-				array(
-					'value'		=> 'col-2cr',
-					'label'		=> '2 Column Right',
-					'src'		=> SP_ASSETS_ADMIN . 'images/col-2cr.png'
-				)
-			)
+			'label'		=> 'Slide URL/Link',
+			'id'		=> $prefix . 'slide_btn_url',
+			'type'		=> 'text',
+			'std'		=> '',
+			'desc'		=> 'Enter slide URL'
 		)
 	)
-);*/
+);
 
 /* ---------------------------------------------------------------------- */
 /*	Team post type
@@ -343,7 +325,7 @@ $post_format_quote = array(
 	ot_register_meta_box( $post_format_link );
 	ot_register_meta_box( $post_format_quote );
 	ot_register_meta_box( $post_format_video );
-	// ot_register_meta_box( $post_options );
+	ot_register_meta_box( $post_type_home_slider );
 	ot_register_meta_box( $post_type_team );
 	ot_register_meta_box( $post_type_testimonial );
 	ot_register_meta_box( $post_type_gallery );
