@@ -38,6 +38,7 @@ function sp_add_shortcodes() {
 	add_shortcode( 'sc_gallery', 'sp_gallery_sc' );
 	add_shortcode( 'testimonial', 'sp_testimonial_sc' );
 	add_shortcode( 'team', 'sp_team_sc' );
+	add_shortcode( 'featured_page', 'sp_featured_page' );
 	
 }
 add_action( 'init', 'sp_add_shortcodes' );
@@ -274,13 +275,6 @@ function sp_gallery_sc( $atts, $content = null ){
 /*--------------------------------------------------------------------------------------*/
 function sp_testimonial_sc( $atts, $content = null ){
 
-	/*extract( shortcode_atts( array(
-		'style' => null,
-		'numberposts' => null
-	), $atts ) );
-
-	return sp_get_testimonial( $style, $numberposts );*/
-
 	global $post;
 
 	extract( shortcode_atts( array(
@@ -309,13 +303,6 @@ function sp_testimonial_sc( $atts, $content = null ){
 /*--------------------------------------------------------------------------------------*/
 function sp_team_sc( $atts, $content = null ){
 
-	/*extract( shortcode_atts( array(
-		'category_id' => null,
-		'numberposts' => null
-	), $atts ) );
-
-	return sp_get_team_member( $category_id, $numberposts );*/
-
 	global $post;
 
 	extract( shortcode_atts( array(
@@ -334,6 +321,28 @@ function sp_team_sc( $atts, $content = null ){
 				'posts_per_page' => $postnum
 			);
 	$out = sp_get_posts_type( 'team', $args );
+
+	return $out;
+
+}
+
+/*--------------------------------------------------------------------------------------*/
+/* Featured page shortcode
+/*--------------------------------------------------------------------------------------*/
+function sp_featured_page( $atts, $content = null ){
+
+	global $post;
+
+	extract( shortcode_atts( array(
+		'parent_page_id' => null,
+		'child_page_num' => null,
+	), $atts ) );
+
+	$args = array (
+				'child_of' => $parent_page_id,
+				'number' => $child_page_num
+			);
+	$out = sp_get_featured_page( $args );
 
 	return $out;
 

@@ -1099,3 +1099,29 @@ if ( ! function_exists( 'sp_get_testimonial' ) ) {
 	}
 }
 
+/* ---------------------------------------------------------------------- */
+/*	Render HTML Featured Page
+/* ---------------------------------------------------------------------- */
+if ( ! function_exists( 'sp_get_featured_page' ) ) {
+	function sp_get_featured_page( $args ){
+		global $post;
+
+		$out = '<div class="featured-page clearfix">';
+
+		$featured_pages = get_pages( $args );
+		foreach ( $featured_pages as $page ) {
+			$thumb_url = wp_get_attachment_image_src( get_post_thumbnail_id( $page->ID ), 'large' );
+            $image_url = aq_resize( $thumb_url[0], '300', '180', true);
+
+			$out .= '<div class="one-third">';
+			$out .= '<img src="' . $image_url . '">';
+			$out .= '<h5><a href="'.get_page_link( $page->ID ).'">' . $page->post_title . '</a></h5>';
+			$out .= '</div>';
+		}
+
+		$out .= '</div>';
+
+		return $out;	
+	}
+}
+
