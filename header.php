@@ -72,6 +72,7 @@
 		</div><!-- end .container .clearfix -->
         </header><!-- end #header -->
 
+        <?php if ( is_home() || is_front_page() ) { ?>
         <script type="text/javascript">
             jQuery(document).ready(function($){
                 /* Single Post slider */
@@ -118,3 +119,4 @@
             wp_reset_postdata();?>   
             </ul>
         </div> <!-- /#home-slider -->
+        <?php } ?>

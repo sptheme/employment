@@ -57,6 +57,35 @@ $page_options = array(
 );
 
 /* ---------------------------------------------------------------------- */
+/*	Post and page meta
+/* ---------------------------------------------------------------------- */
+
+$post_options = array(
+	'id'          => 'post-setting',
+	'title'       => 'Post meta',
+	'desc'        => '',
+	'pages'       => array( 'post', 'page' ),
+	'context'     => 'normal',
+	'priority'    => 'high',
+	'fields'      => array(
+		array(
+			'label'		=> 'Custom masthead',
+			'id'		=> $prefix . 'is_custom',
+			'desc'		=> 'On: will upload new custom masthead, if Off: will use random 7 masthead images.',
+			'std'		=> 'off',
+			'type'		=> 'on-off'
+		),
+		array(
+			'label'		=> 'Upload masthead image',
+			'id'		=> $prefix . 'custom_masthead',
+			'type'		=> 'upload',
+			'desc'		=> 'Image size would be 1024px by 214px',
+			'condition' => 'sp_is_custom:is(on)'
+		)
+	)
+);
+
+/* ---------------------------------------------------------------------- */
 /*	Home Sliders post type
 /* ---------------------------------------------------------------------- */
 $post_type_home_slider = array(
@@ -345,6 +374,7 @@ $post_format_quote = array(
 	ot_register_meta_box( $post_format_link );
 	ot_register_meta_box( $post_format_quote );
 	ot_register_meta_box( $post_format_video );
+	ot_register_meta_box( $post_options );
 	ot_register_meta_box( $post_type_home_slider );
 	ot_register_meta_box( $post_type_team );
 	ot_register_meta_box( $post_type_partner );
