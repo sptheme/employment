@@ -21,6 +21,7 @@ function sp_shortcodes_register_mce_button_3( $buttons ) {
 	array_push( $buttons, 'featured_page' );
 	array_push( $buttons, 'testimonial' );
 	array_push( $buttons, 'team' );
+	array_push( $buttons, 'partner' );
 
     return $buttons;
 }
@@ -65,6 +66,7 @@ function sp_shortcodes_add_tinymce_plugin($plugin_array) {
 	$plugin_array['featured_page']	= ED_JS_URL . 'ed-featured-page.js';
 	$plugin_array['testimonial']	= ED_JS_URL . 'ed-testimonial.js';
 	$plugin_array['team']			= ED_JS_URL . 'ed-team.js';
+	$plugin_array['partner']		= ED_JS_URL . 'ed-partner.js';
 
 	
     return $plugin_array;
@@ -89,5 +91,7 @@ load_template( SC_INC_DIR . 'popup/ajax-slider-shortcode.php' );
 load_template( SC_INC_DIR . 'popup/ajax-gallery-shortcode.php' );
 load_template( SC_INC_DIR . 'popup/ajax-team-shortcode.php' );
 load_template( SC_INC_DIR . 'popup/ajax-featured-page-shortcode.php' );
+load_template( SC_INC_DIR . 'popup/ajax-team-shortcode.php' );
+load_template( SC_INC_DIR . 'popup/ajax-partner-shortcode.php' );
 
 ?>

@@ -844,17 +844,15 @@ if ( !function_exists('sp_get_related_posts') ) {
 /* ---------------------------------------------------------------------- */
 if ( !function_exists('sp_switch_posttype_content') ) {
 	function sp_switch_posttype_content( $post_id, $post_type ) {
-		
-		if ( $post_type == 'tv' ) {
-			$out = sp_render_video_post($post_id, 'thumb-medium');
-		} elseif ( $post_type == 'radio' ) {
-			$out = sp_render_sound_post($post_id, 'thumb-medium');
-		} elseif ( $post_type == 'team' ) {
-			$out = sp_render_team_post( $post_id, 'thumb-medium' );
-		}elseif ( $post_type == 'gallery' ) {
-			$out = sp_render_photogallery_post( $post_id, 'thumb-medium' );
+
+		if ( $post_type == 'team' ) {
+			$out = sp_render_team_post( $post_id, 'medium' );
+		} elseif ( $post_type == 'partner' ) {
+			$out = sp_render_partner_post( $post_id, 'medium' );	
+		} elseif ( $post_type == 'gallery' ) {
+			$out = sp_render_photogallery_post( $post_id, 'medium' );
 		} else { // for blog 
-			$out = sp_render_blog_post($post_id, 'thumb-medium');
+			$out = sp_render_blog_post($post_id, 'medium');
 		}
 		return $out;
 		
@@ -1055,6 +1053,29 @@ if ( ! function_exists( 'sp_single_team_meta' ) ) {
 	    $out .= '<a class="team-email" href="mailto:' . $team_email . '">' . $team_email . '</a>';
 	    $out .= '</div>';
 
+		return $out;	
+	}
+}
+
+/* ---------------------------------------------------------------------- */
+/*	Render HTML Partner logo
+/* ---------------------------------------------------------------------- */ 
+
+if ( ! function_exists( 'sp_render_partner_post' ) ) {
+	function sp_render_partner_post( $post_id, $size = 'thumbnail' ){
+		
+		$partner_url = get_post_meta( $post_id, 'sp_partner_link', true );
+		$thumb_url = sp_post_thumbnail($size);
+        $image_url = aq_resize( $thumb_url, '132');
+		
+		$out = '<article id="post-' . $post_id . '">';
+		if ( $partner_url ) {
+			$out .= '<a href="'.$partner_url.'" target="_blank"><img src="' . $image_url . '" /></a>';
+		} else {
+			$out .= '<img src="' . $image_url . '" />';
+		}
+		$out .= '</article>';
+		
 		return $out;	
 	}
 }

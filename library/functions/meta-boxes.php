@@ -111,6 +111,26 @@ $post_type_team = array(
 );
 
 /* ---------------------------------------------------------------------- */
+/*	Partner post type
+/* ---------------------------------------------------------------------- */
+$post_type_partner = array(
+	'id'          => 'partner-setting',
+	'title'       => 'Partner meta',
+	'desc'        => '',
+	'pages'       => array( 'partner' ),
+	'context'     => 'normal',
+	'priority'    => 'high',
+	'fields'      => array(
+		array(
+			'label'		=> 'Logo link',
+			'id'		=> $prefix . 'partner_link',
+			'type'		=> 'text',
+			'desc'		=> 'Enter website address of parnter\' logo'
+		)
+	)
+);
+
+/* ---------------------------------------------------------------------- */
 /*	Testimonial post type
 /* ---------------------------------------------------------------------- */
 $post_type_testimonial = array(
@@ -327,6 +347,7 @@ $post_format_quote = array(
 	ot_register_meta_box( $post_format_video );
 	ot_register_meta_box( $post_type_home_slider );
 	ot_register_meta_box( $post_type_team );
+	ot_register_meta_box( $post_type_partner );
 	ot_register_meta_box( $post_type_testimonial );
 	ot_register_meta_box( $post_type_gallery );
 	ot_register_meta_box( $post_type_slider );

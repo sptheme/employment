@@ -31,6 +31,7 @@ if ( ! isset( $cp_menu_position ) )
 	$cp_menu_position = array(
 			'menu_home_slider'	=> 30,
 			'menu_team'	=> 30,
+			'menu_partner'	=> 33,
 			'menu_testimonial'	=> 33,
 			'menu_gallery'	=> 39,
 			'menu_slider'	=> 42,

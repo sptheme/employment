@@ -38,6 +38,7 @@ function sp_add_shortcodes() {
 	add_shortcode( 'sc_gallery', 'sp_gallery_sc' );
 	add_shortcode( 'testimonial', 'sp_testimonial_sc' );
 	add_shortcode( 'team', 'sp_team_sc' );
+	add_shortcode( 'partner', 'sp_partner_sc' );
 	add_shortcode( 'featured_page', 'sp_featured_page' );
 	
 }
@@ -306,21 +307,57 @@ function sp_team_sc( $atts, $content = null ){
 	global $post;
 
 	extract( shortcode_atts( array(
-		'term_id' => null,
-		'post_num' => null,
+		'category_id' => null,
+		'numberposts' => null,
 	), $atts ) );
 
-	$args = array (
+	if ( $category_id == 'all') {
+		$args = array ( 'posts_per_page' => $numberposts );
+	} else {
+		$args = array (
 				'tax_query' => array(
 					array(
 						'taxonomy' => 'team-category',
 						'field'    => 'id',
-						'terms'    => $term_id,
+						'terms'    => $category_id,
 					)
 				),
-				'posts_per_page' => $postnum
+				'posts_per_page' => $numberposts
 			);
+	}
 	$out = sp_get_posts_type( 'team', $args );
+
+	return $out;
+
+}
+
+/*--------------------------------------------------------------------------------------*/
+/* Partner shortcode
+/*--------------------------------------------------------------------------------------*/
+function sp_partner_sc( $atts, $content = null ){
+
+	global $post;
+
+	extract( shortcode_atts( array(
+		'category_id' => null,
+		'numberposts' => null,
+	), $atts ) );
+
+	if ( $category_id == 'all') {
+		$args = array ( 'posts_per_page' => $numberposts );
+	} else {
+		$args = array (
+				'tax_query' => array(
+					array(
+						'taxonomy' => 'partner-category',
+						'field'    => 'id',
+						'terms'    => $category_id,
+					)
+				),
+				'posts_per_page' => $numberposts
+			);
+	}
+	$out = sp_get_posts_type( 'partner', $args );
 
 	return $out;
 
