@@ -23,7 +23,7 @@
 
 					<div class="entry-content">
 						<div class="one-third">
-						<?php echo sp_single_team_meta( 'large' ); ?>
+						<?php echo sp_single_team_html( $post->ID, 'large' ); ?>
 						</div>
 						
 						<div class="two-third last">

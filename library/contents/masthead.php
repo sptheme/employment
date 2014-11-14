@@ -9,7 +9,7 @@
 			SP_ASSETS_THEME . 'images/masthead-6.jpg',
 		);
 
-	( $custom_masthead ) ? $bg_masthead = $custom_masthead : $bg_masthead = $mastheads[rand(1, count($mastheads))];
+	( $custom_masthead ) ? $bg_masthead = $custom_masthead : $bg_masthead = $mastheads[(rand(1, count($mastheads))-1)];
 	
 ?>
 
