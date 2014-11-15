@@ -850,7 +850,7 @@ if ( !function_exists('sp_switch_posttype_content') ) {
 		} elseif ( $post_type == 'gallery' ) {
 			$out = sp_render_photogallery_post( $post_id, 'medium' );
 		} else { // for blog 
-			$out = sp_render_blog_post($post_id, 'medium');
+			$out = sp_render_blog_post($post_id, 'medium', 'hover-1');
 		}
 		return $out;
 		
@@ -915,21 +915,28 @@ if ( !function_exists('sp_render_sound_post') ) {
 /* Render HTML blog
 /* ---------------------------------------------------------------------- */
 if ( !function_exists('sp_render_blog_post') ) {
-	function sp_render_blog_post($post_id, $size = 'thumbnail') {
+	function sp_render_blog_post($post_id, $size = 'thumbnail', $style='') {
 
 		$placeholder = SP_ASSETS_THEME . 'images/placeholder/thumbnail-300x225.gif';
+		$image_url = aq_resize( sp_post_thumbnail( $size ), '172', '132', true);
 
     	$out = '<article id="post-' . $post_id . '">';
-    	$out .= '<div class="thumb-effect">';
+    	$out .= '<div class="thumb-effect ' . $style .'">';
     	if ( has_post_thumbnail() ) :
-			$out .= '<img class="attachment-medium wp-post-image" src="' . sp_post_thumbnail( $size ) . '" />';
+			$out .= '<img class="attachment-medium wp-post-image" src="' . $image_url . '" />';
 		else :
 			$out .= '<img class="attachment-medium wp-post-image" src="' . $placeholder . '" />';
 		endif; 
-		$out .= '<div class="thumb-caption">';
-		$out .= '<h5>' . get_the_title() . '</h5>';
+		$out .= '<div class="caption-wrapper">';
+		$out .= '<div class="caption-inner">';
+		$out .= '<div class="caption-holder">';
+		$out .= '<h5><a href="' . get_permalink() . '">' . get_the_title() . '</a></h5>';
 		$out .= '<span class="entry-meta">' . get_the_date() . '</span>';
-		$out .= '<a href="' . get_permalink() . '">' . __('Take a look', SP_TEXT_DOMAIN) . '</a>';
+		if ( !empty($style) ) {
+			$out .= '<a href="' . get_permalink() . '" class="btn-preview">' . __('Take a look', SP_TEXT_DOMAIN) . '</a>';
+		}
+		$out .= '</div>';
+		$out .= '</div>';
 		$out .= '</div>';
 		$out .= '</div>';
 	    $out .= '</article>';
@@ -1033,11 +1040,7 @@ if ( ! function_exists( 'sp_single_team_html' ) ) {
 		$out .= '<div class="caption-wrapper">';
 		$out .= '<div class="caption-inner">';
 		$out .= '<div class="caption-holder">';
-		if ( is_singular('team') ) {
-			$out .= '<h5>' . get_the_title() . '</h5>';
-		} else {
-			$out .= '<h5><a href="' . get_permalink() . '">' . get_the_title() . '</a></h5>';
-		}
+		$out .= '<h5><a href="' . get_permalink() . '">' . get_the_title() . '</a></h5>';
 		$out .= '<span class="entry-meta">' . $team_position . '</span>';
 		if ( !empty($style) ) {
 			$out .= '<a href="' . get_permalink() . '" class="btn-preview">' . __('Take a look', SP_TEXT_DOMAIN) . '</a>';

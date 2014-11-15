@@ -40,10 +40,10 @@
 					<?php foreach ( $gallery as $image ): ?>
 						<li>
 							<?php 
-								//$imageid = wp_get_attachment_image_src($image,'post-slider'); 
 								$images = wp_get_attachment( $image );
+								$image_url = aq_resize( $images['src'], '620', '372', true );
 							?>
-							<img src="<?php echo $images['src']; ?>" alt="<?php echo $images['caption']; ?>">
+							<img src="<?php echo $image_url; ?>" alt="<?php echo $images['caption']; ?>">
 							<?php if ( $images['caption'] ): ?>
 								<p class="flex-caption"><?php echo $images['caption']; ?></p>
 							<?php endif; ?>
@@ -62,9 +62,12 @@
 	<div class="post-format">
 		<div class="wp-caption">
 			<?php if ( has_post_thumbnail() ) {	
-				the_post_thumbnail('large'); 
-				$caption = get_post(get_post_thumbnail_id())->post_excerpt;
-				if ( isset($caption) && $caption && is_singular() ) echo '<p class="wp-caption-text">'.$caption.'</p>';
+				$attache_id = get_post_thumbnail_id( get_the_ID() );
+				$images = wp_get_attachment( $attache_id );
+				$image_url = aq_resize( $images['src'], '620', '372', true );
+				echo '<img src="' . $image_url . '" alt="' . $images['caption'] . '">';
+				
+				if ( $images['caption'] && is_singular() ) echo '<p class="wp-caption-text">'.$images['caption'].'</p>';
 			} ?>
 		</div>
 	</div>

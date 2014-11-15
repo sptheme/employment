@@ -5,6 +5,8 @@
 ?>
 
 <?php get_header(); ?>
+
+<?php get_template_part('library/contents/masthead'); ?>
     
     <?php global $wp_query; ?>
 

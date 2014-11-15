@@ -39,7 +39,8 @@ class sp_widget_assistant extends WP_Widget {
 		/* Our variables from the widget settings. */
 		$title = apply_filters('widget_title', $instance['title']);
 		$desc = apply_filters( 'widget_textarea', empty( $instance['desc'] ) ? '' : $instance['desc'], $instance );
-		$call_assistant = $instance['call_assistant'];
+		$call_assistant_1 = $instance['call_assistant_1'];
+		$call_assistant_2 = $instance['call_assistant_2'];
 		
 		/* Before widget (defined by themes). */
 		$out = $before_widget;
@@ -49,7 +50,9 @@ class sp_widget_assistant extends WP_Widget {
 			$out .= $before_title . $title . $after_title;
 
 		$out .= wpautop($desc);
-		$out .= '<div class="call-assistant">' . $call_assistant . '</div>';
+		$out .= '<div class="call-assistant">' . $call_assistant_1 . '</div>';
+		if ( $call_assistant_2 != '' )
+			$out .= '<div class="call-assistant">' . $call_assistant_2 . '</div>';
 	
 		/* After widget (defined by themes). */		
 		$out .= $after_widget;
@@ -66,7 +69,8 @@ class sp_widget_assistant extends WP_Widget {
 		/* Strip tags for title and name to remove HTML (important for text inputs). */
 		$instance['title'] = strip_tags( $new_instance['title'] );
 		$instance['desc'] = strip_tags( $new_instance['desc'] );
-		$instance['call_assistant'] = strip_tags( $new_instance['call_assistant'] );
+		$instance['call_assistant_1'] = strip_tags( $new_instance['call_assistant_1'] );
+		$instance['call_assistant_2'] = strip_tags( $new_instance['call_assistant_2'] );
 		
 		return $instance;
 	}
@@ -78,7 +82,7 @@ class sp_widget_assistant extends WP_Widget {
 	 */	
 	function form( $instance ) {
 		/* Set up some default widget settings. */
-		$defaults = array( 'title' => 'Need Assistance?', 'desc' => 'Our team is 24/7 at your service to help you with your booking issues or answer any related questions.', 'call_assistant' => '(855) 12 608 108');
+		$defaults = array( 'title' => 'Need Assistance?', 'desc' => 'Our team is 24/7 at your service to help you with your issues or answer any related questions.', 'call_assistant_1' => '023 990 225', 'call_assistant_2' => '010 888 876');
 		$instance = wp_parse_args( (array) $instance, $defaults); ?>
 		
 		<p>
@@ -92,8 +96,13 @@ class sp_widget_assistant extends WP_Widget {
 		</p>
 
 		<p>
-		<label for="<?php echo $this->get_field_id( 'call_assistant' ); ?>"><?php _e('Phone number:', 'sptheme_widget') ?></label>
-		<input type="text" id="<?php echo $this->get_field_id( 'call_assistant' ); ?>" name="<?php echo $this->get_field_name( 'call_assistant' ); ?>" value="<?php echo $instance['call_assistant']; ?>" class="widefat">
+		<label for="<?php echo $this->get_field_id( 'call_assistant_1' ); ?>"><?php _e('Call line 1:', 'sptheme_widget') ?></label>
+		<input type="text" id="<?php echo $this->get_field_id( 'call_assistant_1' ); ?>" name="<?php echo $this->get_field_name( 'call_assistant_1' ); ?>" value="<?php echo $instance['call_assistant_1']; ?>" class="widefat">
+		</p>
+
+		<p>
+		<label for="<?php echo $this->get_field_id( 'call_assistant_2' ); ?>"><?php _e('Call line 2: (Optional)', 'sptheme_widget') ?></label>
+		<input type="text" id="<?php echo $this->get_field_id( 'call_assistant_2' ); ?>" name="<?php echo $this->get_field_name( 'call_assistant_2' ); ?>" value="<?php echo $instance['call_assistant_2']; ?>" class="widefat">
 		</p>
 
         

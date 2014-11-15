@@ -6,6 +6,8 @@
 
 <?php get_header(); ?>
 
+<?php get_template_part('library/contents/masthead'); ?>
+
 <?php do_action( 'sp_start_content_wrap_html' ); ?>
     <div id="main" class="main">
 		<?php

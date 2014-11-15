@@ -15,7 +15,9 @@
 
 <div class="masthead" style="background-image:url(<?php echo $bg_masthead; ?>);">
     <div class="subtitle">
+    <?php if ( is_page() ) : ?>
         <h1><?php the_title(); ?></h1>
         <span class="separator"></span>
+    <?php endif; ?>    
     </div>
 </div>

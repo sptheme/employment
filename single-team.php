@@ -6,6 +6,8 @@
 
 <?php get_header(); ?>
 
+<?php get_template_part('library/contents/masthead'); ?>
+
 <?php do_action( 'sp_start_content_wrap_html' ); ?>
     <div id="main" class="main">
 		<?php
@@ -15,24 +17,25 @@
 
 				<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 			
-					<header class="entry-header">
-						<h1 class="entry-title">
-							<?php the_title(); ?>
-						</h1>
-					</header>
-
-					<div class="entry-content">
+					
 						<div class="one-third">
 						<?php echo sp_single_team_html( $post->ID, 'large' ); ?>
 						</div>
 						
 						<div class="two-third last">
+							<header class="entry-header">
+								<h1 class="entry-title">
+									<?php the_title(); ?>
+								</h1>
+							</header>
+							<div class="entry-content">
 							<?php the_content(); ?>
-						</div>
+							</div><!-- .entry-content -->
+						</div>	
 						<div class="clear"></div>
 
 						<?php if ( ot_get_option('social_share') != 'off' ) { get_template_part('library/contents/social-share'); } ?>
-					</div><!-- .entry-content -->
+					
 
 				</article><!-- #post -->
 
