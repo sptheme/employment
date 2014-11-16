@@ -13,15 +13,15 @@ function sp_shortcodes_register_mce_button_3( $buttons ) {
 	array_push( $buttons, 'col' );
 	array_push( $buttons, 'horz_rule' );
 	array_push( $buttons, 'email_encoder' );
-	array_push( $buttons, 'slider' );
 	array_push( $buttons, 'accordion' );
 	array_push( $buttons, 'toggle' );
 	array_push( $buttons, 'tab' );
-	array_push( $buttons, 'gallery' );
+	//array_push( $buttons, 'slider' );
+	//array_push( $buttons, 'gallery' );
+	//array_push( $buttons, 'testimonial' );
 	array_push( $buttons, 'featured_page' );
-	array_push( $buttons, 'testimonial' );
-	array_push( $buttons, 'team' );
 	array_push( $buttons, 'partner' );
+	array_push( $buttons, 'team' );
 
     return $buttons;
 }
@@ -58,16 +58,15 @@ function sp_shortcodes_add_tinymce_plugin($plugin_array) {
 	$plugin_array['col'] 			= ED_JS_URL . 'ed-columns.js';
 	$plugin_array['horz_rule']		= ED_JS_URL . 'ed-hr.js';
 	$plugin_array['email_encoder']	= ED_JS_URL . 'ed-email-encoder.js';
-	$plugin_array['slider']			= ED_JS_URL . 'ed-slider.js';
 	$plugin_array['accordion']		= ED_JS_URL . 'ed-accordion.js';
 	$plugin_array['toggle']			= ED_JS_URL . 'ed-toggle.js';
 	$plugin_array['tab']			= ED_JS_URL . 'ed-tab.js';
-	$plugin_array['gallery']		= ED_JS_URL . 'ed-gallery.js';
+	//$plugin_array['slider']			= ED_JS_URL . 'ed-slider.js';
+	//$plugin_array['gallery']		= ED_JS_URL . 'ed-gallery.js';
+	//$plugin_array['testimonial']	= ED_JS_URL . 'ed-testimonial.js';
 	$plugin_array['featured_page']	= ED_JS_URL . 'ed-featured-page.js';
-	$plugin_array['testimonial']	= ED_JS_URL . 'ed-testimonial.js';
-	$plugin_array['team']			= ED_JS_URL . 'ed-team.js';
 	$plugin_array['partner']		= ED_JS_URL . 'ed-partner.js';
-
+	$plugin_array['team']			= ED_JS_URL . 'ed-team.js';
 	
     return $plugin_array;
 }

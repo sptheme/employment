@@ -7,7 +7,7 @@
         init : function( ed, url ) {
              ed.addButton( 'partner', {
                 title : 'Insert partner',
-                image : url + '/ed-icons/people.png',
+                image : url + '/ed-icons/logo_grid.png',
                 onclick : function() {
 						var width = jQuery( window ).width(), H = jQuery( window ).height(), W = ( 720 < width ) ? 720 : width;
 						W = W - 80;
