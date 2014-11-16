@@ -18,14 +18,14 @@ function sp_featured_page_shortcode_ajax(){
 						<?php wp_dropdown_pages( array( 'name' => $field ) ); ?>
 					</td>
 				</tr>
-				<tr>
+				<!-- <tr>
 					<?php $field = 'child_page_num'; ?>
 					<th><label for="<?php echo $field; ?>"><?php _e( 'Number of page', 'sptheme_admin' ); ?></label></th>
 					<td>
 						<input type="text" name="<?php echo $field; ?>" id="<?php echo $field; ?>" value="6" /> <br>
 						<smal>Number of child page to display as featured page (empty for show all)</small>
 					</td>
-				</tr>
+				</tr> -->
 			</table>
 			<p class="submit">
 				<input type="button" id="option-submit" class="button-primary" value="<?php _e( 'Add Featured Page', 'sptheme_admin' ) ; ?>" name="submit" />

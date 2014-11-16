@@ -1132,12 +1132,72 @@ if ( ! function_exists( 'sp_get_featured_page' ) ) {
             $image_url = aq_resize( $thumb_url[0], '300', '180', true);
 
 			$out .= '<div class="one-third">';
+			$out .= '<div class="thumb-icon">';
 			$out .= '<img src="' . $image_url . '">';
-			$out .= '<h5><a href="'.get_page_link( $page->ID ).'">' . $page->post_title . '</a></h5>';
+			$out .= '<div class="bg-mask"><a class="icon icon-search" href="'.get_page_link( $page->ID ).'"></a></div>';
+			$out .= '</div>';
+			$out .= '<h6><a href="'.get_page_link( $page->ID ).'">' . $page->post_title . '</a></h6>';
 			$out .= '</div>';
 		}
 
 		$out .= '</div>';
+
+		return $out;	
+	}
+}
+
+
+/* ---------------------------------------------------------------------- */
+/*	Render HTML Home slider post
+/* ---------------------------------------------------------------------- */
+if ( ! function_exists( 'sp_get_homeslider_post' ) ) {
+	function sp_get_homeslider_post( $args ){
+		global $post;
+
+		$post_slides = get_posts( $args );
+	    $out = '';
+	    $out .='<script type="text/javascript">
+					jQuery(document).ready(function($){
+						$("#home-slider").flexslider({
+							animation: "slide",
+							slideshowSpeed: 5000,
+							animationDuration: 200,
+							animationLoop: true,
+							pauseOnAction: true,
+							pauseOnHover: true,
+							controlNav: false,
+							before: function(slider) {
+	                        $(".flex-caption").delay(100).fadeOut(100);
+		                    },
+		                    after: function(slider) {
+		                      $(".flex-active-slide").find(".flex-caption").delay(200).fadeIn(400);
+		                    }	
+						});
+					});		
+					</script>';
+	    $out .= '<div id="home-slider" class="flexslider">';
+	    $out .= '<ul class="slides">';
+	    foreach ($post_slides as $post ) : setup_postdata( $post ); 
+	        $learn_more_btn = get_post_meta( $post->ID, 'sp_slide_btn_name', true);
+	        $learn_more_link = get_post_meta( $post->ID, 'sp_slide_btn_url', true);
+	        $thumb_url = sp_post_thumbnail('large');
+	        $image_url = aq_resize( $thumb_url, '960', '425', true);
+	        $caption = get_the_content();
+
+	        $out .= '<li>';
+	        $out .= '<img src="' . $image_url . '">';
+	        if ( !empty($caption) ) {
+	        $out .= '<div class="flex-caption clearfix">';
+	        $out .= wpautop(get_the_content());
+	        $out .= '<a class="learn-more" href="' . $learn_more_link . '">' . $learn_more_btn . '</a>';
+	        $out .= '</div>';
+	    	}
+	        $out .= '</li>';
+	    endforeach;
+	    wp_reset_postdata();
+
+	    $out .= '</ul>';
+	    $out .= '</div>';
 
 		return $out;	
 	}

@@ -39,7 +39,8 @@ function sp_add_shortcodes() {
 	add_shortcode( 'testimonial', 'sp_testimonial_sc' );
 	add_shortcode( 'team', 'sp_team_sc' );
 	add_shortcode( 'partner', 'sp_partner_sc' );
-	add_shortcode( 'featured_page', 'sp_featured_page' );
+	add_shortcode( 'featured_page', 'sp_featured_page_sc' );
+	add_shortcode( 'homeslider', 'sp_homeslider_sc' );
 	
 }
 add_action( 'init', 'sp_add_shortcodes' );
@@ -366,23 +367,40 @@ function sp_partner_sc( $atts, $content = null ){
 /*--------------------------------------------------------------------------------------*/
 /* Featured page shortcode
 /*--------------------------------------------------------------------------------------*/
-function sp_featured_page( $atts, $content = null ){
+function sp_featured_page_sc( $atts, $content = null ){
 
 	global $post;
 
 	extract( shortcode_atts( array(
 		'parent_page_id' => null,
-		'child_page_num' => null,
+		//'child_page_num' => null,
 	), $atts ) );
 
 	$args = array (
 				'child_of' => $parent_page_id,
-				'number' => $child_page_num
+				//'number' => $child_page_num
 			);
 	$out = sp_get_featured_page( $args );
 
 	return $out;
 
+}
+
+/*--------------------------------------------------------------------------------------*/
+/* 	Home Slider
+/*--------------------------------------------------------------------------------------*/
+function sp_homeslider_sc( $atts, $content = null ){
+	global $post;
+
+	extract( shortcode_atts( array(
+		'slide_num' => null,
+	), $atts ) );
+
+	//Start the loop
+    $args = array( 'posts_per_page' => $slide_num, 'post_type' => 'home_slider' );
+    $out = sp_get_homeslider_post( $args );
+
+	return $out;
 }
 
 

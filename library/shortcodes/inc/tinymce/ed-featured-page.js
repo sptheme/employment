@@ -35,7 +35,7 @@
 		// but well, this gets the job done nonetheless
 		var options = { 
 			'parent_page_id' : null,
-			'child_page_num' : null
+			//'child_page_num' : null
 			};
 		var shortcode = '[featured_page';
 		
