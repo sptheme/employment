@@ -51,7 +51,7 @@
   display:block;
 }
 .no-touch .text-icon > a:hover > h4 {
-  color:#FD4326;
+  color:#4CAF50;
 }
 
 .text-icon.large {
@@ -64,11 +64,11 @@
   margin:0;
 }
 .no-touch .text-icon.large:hover {
-  border-bottom:1px solid #FD4326;
+  border-bottom:1px solid #4CAF50;
 }
 .no-touch .text-icon.large > a:hover > i {
   color:#FFF;
-  background:#FD4326;
+  background:#4CAF50;
 }
 
 .text-icon.minimal > h4, .text-icon.minimal > a > h4 {
@@ -81,7 +81,7 @@
   display:block;
 }
 .no-touch .text-icon.minimal > a:hover > i {
-  color:#FD4326;
+  color:#4CAF50;
 }
 
 /* Promo Box */
@@ -151,18 +151,18 @@
 }
 .button.dark { background: #3B3B3B; }
 .button.light, .no-touch .button.dark:hover {
-  background:#FD4326;
+  background:#4CAF50;
   color:#FFF;
 }
 .no-touch .button.light:hover {
   background:#FFF;
-  color:#FD4326;
+  color:#4CAF50;
 }
 
 /* ------------------------
 -----   Accordion - Small   -----
 ------------------------------*/
-.accordion { margin-bottom: 1.5em; }
+.accordion { margin: 1.5em; 0; }
 
 .accordion.small > section {
   padding-left:20px;
@@ -176,7 +176,7 @@
   padding-top:0;
 }
 .accordion.small > section h4 {
-  font-size:12px;
+  font-size:13px;
   font-weight:bold;
   line-height:16px;
   cursor:pointer;
@@ -184,7 +184,6 @@
   color:#6B6B6B;
 }
 .accordion.small > section div {
-  font-size:11px;
   display:none;
 }
 .accordion.small > section div p:first-child {
@@ -194,7 +193,7 @@
   margin-bottom:0;
 }
 .no-touch .accordion.small > section h4:hover, .no-touch .accordion.small > section h4:hover:before {
-  color:#FD4326;
+  color:#4CAF50;
 }
 
 .accordion.small.one > section h4:before {
@@ -270,11 +269,11 @@
 }
 .no-touch .accordion.large h4:hover {
   background:#F7F7F7;
-  color:#FD4326;
+  color:#4CAF50;
 }
 .no-touch .accordion.large h4:hover:before {
   color:#FFF;
-  background:#FD4326;
+  background:#4CAF50;
   border-color:transparent;
 }
 .accordion.large .opened h4 {
@@ -352,7 +351,7 @@
 .alert.error {
   background:#F9E5E6;
   border:1px solid #FAD2D3;
-  color:#FD4326;
+  color:#4CAF50;
 }
 .alert.error i {
   background-color:#FAD2D3;
@@ -390,7 +389,7 @@
 }
 
 /* Tabs */
-.tabs-container { margin-bottom: 1.5em; }
+.tabs-container { margin: 1.5em 0; }
 .tabs-container ul {
   margin:0;
   list-style: none;
@@ -415,16 +414,16 @@
   margin:-1px 0 0 -1px;
   border-top:1px solid transparent;
 }
-.no-touch .tabs-container .titles li a:hover { color:#FD4326; }
+.no-touch .tabs-container .titles li a:hover { color:#4CAF50; }
 .tabs-container .titles li:first-child { border-left:1px solid #E9E9E9; }
 .tabs-container .titles li.opened { background:#F7F7F7; }
 .tabs-container .titles li.opened a {
-  color:#3B3B3B;
-  border-top:1px solid #FD4326;
+  color:#1B5E20;
+  border-top:1px solid #4CAF50;
 }
 
 .tabs-container .tab-contents {
-  padding:0 15px;
+  padding:15px;
   border:1px solid #E9E9E9;
   background:#F7F7F7;
   margin-top:-1px;
