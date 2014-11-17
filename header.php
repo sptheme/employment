@@ -68,6 +68,8 @@
             <nav id="primary-menu-container" class="clearfix">
                 <?php echo sp_main_navigation(); ?>
             </nav><!-- .primary-nav .wrap -->
+
+            <?php echo languages_list_header(); ?>
             
 		</div><!-- end .container .clearfix -->
         </header><!-- end #header -->
