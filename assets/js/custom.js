@@ -107,6 +107,22 @@
    
   });
 
+  /* height: main = sidebar */
+  var $main_h = $('.main').height() + parseInt($('.main').css("padding-top")) + parseInt($('.main').css("padding-bottom")),
+  $sidebar_h = $('.sidebar').height();
+  function adjust_sidebar_height(){
+    if( $(window).width() > 760 ) {
+      if ( $sidebar_h < $main_h ) {
+        $('.sidebar').css( {height:$main_h} );
+      }
+    }
+  }
+
+  adjust_sidebar_height();
+  /*$(window).resize(function(){
+    adjust_sidebar_height();
+  }*/
+
 
 
 }(jQuery));

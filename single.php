@@ -25,7 +25,7 @@
 							<a href="<?php the_permalink(); ?>" rel="bookmark" title="<?php the_title(); ?>"><?php the_title(); ?></a>
 						<?php endif; ?>	
 						</h1>
-						<div class="entry-meta"><?php sp_post_meta(); ?></div>
+						<div class="entry-meta"><?php sp_meta_mini(); ?></div>
 					</header>
 
 					<?php get_template_part('library/contents/post-formats'); ?>			

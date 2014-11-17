@@ -34,7 +34,7 @@
 				});
 			});
 		</script>
-		<div class="flex-container">
+		<div class="post-slider-container">
 			<div class="flexslider" id="post-slider-<?php the_ID(); ?>">
 				<ul class="slides">
 					<?php foreach ( $gallery as $image ): ?>

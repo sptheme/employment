@@ -62,4 +62,4 @@
 #home-slider .flex-caption a:hover { background: #4C7302; }
 
 /* Single Post slider */
-#post-slider { margin-bottom: 30px; }
+.post-slider-container { height: 422px; }
