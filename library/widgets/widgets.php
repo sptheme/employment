@@ -16,50 +16,16 @@ function sp_widgets_init() {
 		'after_title' 	=> '</h4></div>',
 	) );
 
-	// Footer Sidebar 1
-	register_sidebar( array(
-		'name' 			=> __( 'Footer Sidebar 1', 'sptheme_admin' ),
-		'id' 			=> 'footer-sidebar-1',
-		'description' 	=> __( 'Drag widgets into this sidebar', 'sptheme_admin' ),
-		'before_widget' => '<div id="%1$s" class="widget %2$s">',
-		'after_widget' 	=> "</div>",
-		'before_title' 	=> '<div class="widget-title"><h4>',
-		'after_title' 	=> '</h4></div>',
-	) );
-
-	// Footer Sidebar 2
-	register_sidebar( array(
-		'name' 			=> __( 'Footer Sidebar 2', 'sptheme_admin' ),
-		'id' 			=> 'footer-sidebar-2',
-		'description' 	=> __( 'Drag widgets into this sidebar', 'sptheme_admin' ),
-		'before_widget' => '<div id="%1$s" class="widget %2$s">',
-		'after_widget' 	=> "</div>",
-		'before_title' 	=> '<div class="widget-title"><h4>',
-		'after_title' 	=> '</h4></div>',
-	) );
-
-	// Footer Sidebar 3
-	register_sidebar( array(
-		'name' 			=> __( 'Footer Sidebar 3', 'sptheme_admin' ),
-		'id' 			=> 'footer-sidebar-3',
-		'description' 	=> __( 'Drag widgets into this sidebar', 'sptheme_admin' ),
-		'before_widget' => '<div id="%1$s" class="widget %2$s">',
-		'after_widget' 	=> "</div>",
-		'before_title' 	=> '<div class="widget-title"><h4>',
-		'after_title' 	=> '</h4></div>',
-	) );
-
 }
 add_action('widgets_init', 'sp_widgets_init');
 
 // Addon widgets		
-load_template ( SP_BASE_DIR . 'library/widgets/widget-social-networks.php' );
-load_template ( SP_BASE_DIR . 'library/widgets/widget-enewsletter.php' );
-load_template ( SP_BASE_DIR . 'library/widgets/widget-quick-contact.php' );
+load_template ( SP_BASE_DIR . 'library/widgets/widget-subnav.php' );
+load_template ( SP_BASE_DIR . 'library/widgets/widget-image-link.php' );
+load_template ( SP_BASE_DIR . 'library/widgets/widget-assistant.php' );
 load_template ( SP_BASE_DIR . 'library/widgets/widget-post-category.php' );
 load_template ( SP_BASE_DIR . 'library/widgets/widget-fb-likebox.php' );
 load_template ( SP_BASE_DIR . 'library/widgets/widget-video.php' );
-load_template ( SP_BASE_DIR . 'library/widgets/widget-photogallery.php' );
 
 /* ---------------------------------------------------------------------- */
 /*	Register custom sidebars

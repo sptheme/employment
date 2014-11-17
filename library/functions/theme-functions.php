@@ -609,10 +609,12 @@ if ( ! function_exists( 'sp_last_posts_cat' ) ) {
 
 			$out .= '<article>';
 			$out .= '<a href="' . get_permalink() . '" class="clearfix">';
-			if ( has_post_thumbnail() && $thumb ) :
-				$out .= get_the_post_thumbnail();
-			else :
-				$out .= '<img class="wp-image-placeholder" src="' . SP_ASSETS_THEME .'images/placeholder/thumbnail-300x225.gif">';	
+			if ( $thumb ) :
+				if ( has_post_thumbnail() ) {
+					$out .= get_the_post_thumbnail();
+				} else {
+					$out .= '<img class="wp-image-placeholder" src="' . SP_ASSETS_THEME .'images/placeholder/thumbnail-300x225.gif">';	
+				}
 			endif;
 			$out .= '<h5>' . get_the_title() . '</h5>';
 			$out .= '<span class="time">' . get_the_time('j M, Y') . '</span>';
