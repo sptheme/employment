@@ -234,7 +234,7 @@ function sp_slider_sc( $atts, $content = null ){
 	$args = array(
 		'post_type' 		=>	'slider',
 		'posts_per_page'	=>	$slide_num,
-		'p'					=>	$slide_id
+		'p'					=>	$slide_id,
 	);
 
 	$custom_query = new WP_Query($args);	
@@ -379,6 +379,7 @@ function sp_featured_page_sc( $atts, $content = null ){
 
 	$args = array (
 				'child_of' => $parent_page_id,
+				'sort_column' => 'menu_order'
 				//'number' => $child_page_num
 			);
 	$out = sp_get_featured_page( $args );
