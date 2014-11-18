@@ -411,10 +411,11 @@ function sp_branch_sc( $atts, $content = null ){
 
 	extract( shortcode_atts( array(
 		'category_id' => null,
-		'numberposts' => null
+		'numberposts' => null,
+		'zoomlevel' => null
 	), $atts ) );
 
-	return map_branch_by_location( $category_id, $numberposts );
+	return map_branch_by_location( $category_id, $numberposts, $zoomlevel );
 
 }
 

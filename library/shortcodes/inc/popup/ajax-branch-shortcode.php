@@ -28,6 +28,13 @@ function sp_branch_shortcode_ajax(){
 					</td>
 				</tr>
 				<tr>
+					<?php $field = 'zoomlevel'; ?>
+					<th><label for="<?php echo $field; ?>"><?php _e( 'Zoom level', 'sptheme_admin' ); ?></label></th>
+					<td>
+						<input type="text" name="<?php echo $field; ?>" id="<?php echo $field; ?>" value="14" />
+					</td>
+				</tr>
+				<tr>
 					<?php $field = 'numberposts'; ?>
 					<th><label for="<?php echo $field; ?>"><?php _e( 'Number of marker', 'sptheme_admin' ); ?></label></th>
 					<td>

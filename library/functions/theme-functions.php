@@ -1214,7 +1214,7 @@ if ( ! function_exists( 'sp_get_homeslider_post' ) ) {
 /* ---------------------------------------------------------------------- */
 
 if ( ! function_exists( 'map_branch_by_location' ) ) {
-	function map_branch_by_location ( $term_id, $postnum ){
+	function map_branch_by_location ( $term_id, $postnum, $zoom = 12 ){
 		global $post;
 		?>
 
@@ -1300,7 +1300,7 @@ if ( ! function_exists( 'map_branch_by_location' ) ) {
 
 				//(optional) restore the zoom level after the map is done scaling
 				var listener = google.maps.event.addListener(map, "idle", function () {
-				    map.setZoom(13);
+				    map.setZoom(<?php echo $zoom; ?>);
 				    google.maps.event.removeListener(listener);
 				});
 			});
