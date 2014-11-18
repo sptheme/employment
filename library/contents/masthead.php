@@ -1,4 +1,6 @@
-<?php if ( !is_front_page() ) : ?>
+<?php $is_masthead = get_post_meta( $post->ID, 'sp_is_masthead', true );
+
+	if ( $is_masthead == 'on' ) : ?>
 
 	<?php
 		$custom_masthead = get_post_meta( $post->ID, 'sp_custom_masthead', true );

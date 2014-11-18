@@ -4,15 +4,13 @@
 load_template( SP_BASE_DIR . 'library/custom-posts/cp-home-slider.php' );
 load_template( SP_BASE_DIR . 'library/custom-posts/cp-team.php' );
 load_template( SP_BASE_DIR . 'library/custom-posts/cp-partner.php' );
-//load_template( SP_BASE_DIR . 'library/custom-posts/cp-testimonial.php' );
-//load_template( SP_BASE_DIR . 'library/custom-posts/cp-gallery.php' );
-//load_template( SP_BASE_DIR . 'library/custom-posts/cp-slider.php' );
+load_template( SP_BASE_DIR . 'library/custom-posts/cp-branch.php' );
 
 //Taxonomies
 load_template( SP_BASE_DIR . 'library/custom-posts/taxonomy-team.php' );
 load_template( SP_BASE_DIR . 'library/custom-posts/taxonomy-partner.php' );
-//load_template( SP_BASE_DIR . 'library/custom-posts/taxonomy-testimonial.php' );
-//load_template( SP_BASE_DIR . 'library/custom-posts/taxonomy-gallery.php' );
+load_template( SP_BASE_DIR . 'library/custom-posts/taxonomy-branch.php' );
+
 	
 /*==========================================================================*/
 

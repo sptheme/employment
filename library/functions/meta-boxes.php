@@ -10,7 +10,7 @@ function _custom_meta_boxes() {
   
 /*  Custom meta boxes
 /* ------------------------------------ */
-$page_options = array(
+$page_layout_options = array(
 	'id'          => 'page-options',
 	'title'       => 'Page Options',
 	'desc'        => '',
@@ -60,20 +60,35 @@ $page_options = array(
 /*	Post and page meta
 /* ---------------------------------------------------------------------- */
 
-$post_options = array(
-	'id'          => 'post-setting',
-	'title'       => 'Post meta',
+$masthead_options = array(
+	'id'          => 'masthead-setting',
+	'title'       => 'Masthead meta',
 	'desc'        => '',
 	'pages'       => array( 'post', 'page' ),
 	'context'     => 'normal',
 	'priority'    => 'high',
 	'fields'      => array(
 		array(
+			'label'		=> 'Show page title',
+			'id'		=> $prefix . 'is_page_title',
+			'desc'		=> 'Option to enable and disable page title',
+			'std'		=> 'on',
+			'type'		=> 'on-off'
+		),
+		array(
+			'label'		=> 'Show masthead',
+			'id'		=> $prefix . 'is_masthead',
+			'desc'		=> 'Option to enable and disable masthead',
+			'std'		=> 'on',
+			'type'		=> 'on-off'
+		),
+		array(
 			'label'		=> 'Custom masthead',
 			'id'		=> $prefix . 'is_custom',
 			'desc'		=> 'On: will upload new custom masthead, if Off: will use random 7 masthead images.',
 			'std'		=> 'off',
-			'type'		=> 'on-off'
+			'type'		=> 'on-off',
+			'condition' => 'sp_is_masthead:is(on)'
 		),
 		array(
 			'label'		=> 'Upload masthead image',
@@ -160,68 +175,40 @@ $post_type_partner = array(
 );
 
 /* ---------------------------------------------------------------------- */
-/*	Testimonial post type
+/*	Branch
 /* ---------------------------------------------------------------------- */
-$post_type_testimonial = array(
-	'id'          => 'testimonial-setting',
-	'title'       => 'Testimonial meta',
+$post_type_branch = array(
+	'id'          => 'branch-meta',
+	'title'       => 'Branch meta',
 	'desc'        => '',
-	'pages'       => array( 'testimonial' ),
+	'pages'       => array( 'branch' ),
 	'context'     => 'normal',
 	'priority'    => 'high',
 	'fields'      => array(
 		array(
-			'label'		=> 'Testimonial Cite',
-			'id'		=> $prefix . 'testimonial_cite',
+			'label'		=> 'Latitude and Longitude',
+			'id'		=> $prefix . 'lat_long',
 			'type'		=> 'text',
-			'desc'		=> 'Enter the cite name for the testimonial.'
+			'desc'		=> 'e.g. 11.544873,104.892167. You can get this value from <a href="http://itouchmap.com/latlong.html" target="_blank">itouchmap</a>'
 		),
 		array(
-			'label'		=> 'Testimonial Cite Subtext',
-			'id'		=> $prefix . 'testimonial_cite_subtext',
+			'label'		=> 'Adress',
+			'id'		=> $prefix . 'branch_address',
+			'type'		=> 'textarea',
+			'rows'		=> '2'
+		),
+		array(
+			'label'		=> 'Tel',
+			'id'		=> $prefix . 'branch_tel',
 			'type'		=> 'text',
-			'desc'		=> 'Enter the cite subtext for the testimonial (optional).'
-		)
-	)
-);
-
-/* ---------------------------------------------------------------------- */
-/*	Gallery post type
-/* ---------------------------------------------------------------------- */
-$post_type_gallery = array(
-	'id'          => 'gallery-setting',
-	'title'       => 'Upload photos',
-	'desc'        => 'These settings enable you to upload photos.',
-	'pages'       => array( 'gallery' ),
-	'context'     => 'normal',
-	'priority'    => 'high',
-	'fields'      => array(
+			'desc'		=> 'e.g. (855)-23-990 225/ 10 8888 76'
+		),
 		array(
-			'label'		=> 'Upload photo',
-			'id'		=> $prefix . 'gallery',
-			'type'		=> 'gallery',
-			'desc'		=> 'Upload photos'
-		)
-	)
-);
-
-/* ---------------------------------------------------------------------- */
-/*	Slider post type
-/* ---------------------------------------------------------------------- */
-$post_type_slider = array(
-	'id'          => 'gallery-setting',
-	'title'       => 'Upload photos',
-	'desc'        => 'These settings enable you to upload photos.',
-	'pages'       => array( 'slider' ),
-	'context'     => 'normal',
-	'priority'    => 'high',
-	'fields'      => array(
-		array(
-			'label'		=> 'Upload photo',
-			'id'		=> $prefix . 'sliders',
-			'type'		=> 'gallery',
-			'desc'		=> 'Upload photos'
-		)
+			'label'		=> 'E-mail',
+			'id'		=> $prefix . 'branch_email',
+			'type'		=> 'text',
+			'desc'		=> 'e.g. info@seilanithih.com.kh'
+		),
 	)
 );
 
@@ -367,18 +354,16 @@ $post_format_quote = array(
 
 /*  Register meta boxes
 /* ------------------------------------ */
-	ot_register_meta_box( $page_options );
+	ot_register_meta_box( $page_layout_options );
 	ot_register_meta_box( $post_format_audio );
 	ot_register_meta_box( $post_format_chat );
 	ot_register_meta_box( $post_format_gallery );
 	ot_register_meta_box( $post_format_link );
 	ot_register_meta_box( $post_format_quote );
 	ot_register_meta_box( $post_format_video );
-	ot_register_meta_box( $post_options );
+	ot_register_meta_box( $masthead_options );
 	ot_register_meta_box( $post_type_home_slider );
 	ot_register_meta_box( $post_type_team );
 	ot_register_meta_box( $post_type_partner );
-	ot_register_meta_box( $post_type_testimonial );
-	ot_register_meta_box( $post_type_gallery );
-	ot_register_meta_box( $post_type_slider );
+	ot_register_meta_box( $post_type_branch );
 }

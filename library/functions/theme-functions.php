@@ -1209,3 +1209,104 @@ if ( ! function_exists( 'sp_get_homeslider_post' ) ) {
 	}
 }
 
+/* ---------------------------------------------------------------------- */
+/*	Branch
+/* ---------------------------------------------------------------------- */
+
+if ( ! function_exists( 'map_branch_by_location' ) ) {
+	function map_branch_by_location ( $term_id, $postnum ){
+		global $post;
+		?>
+
+	    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+		<script type="text/javascript">					
+		  jQuery(document).ready(function ($)
+			{
+				var locations = [ 
+			<?php
+			$args = array(
+				 'post_type' =>	'branch',
+	             'posts_per_page' => $postnum,
+	             'post_status' => 'publish',
+	             'tax_query' => array(
+	                    array(
+	                        'taxonomy' => 'branch-location',
+	                        'field' => 'id',
+	                        'terms' => array($term_id)
+	                    )
+	                )
+	        );
+	        $custom_query = new WP_Query( $args );
+
+			while ( $custom_query->have_posts() ) : $custom_query->the_post();
+				$thumb_url = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'large' );
+        		$branch_photo = aq_resize( $thumb_url[0], 135, 90 );
+
+				echo '[';
+				echo '\'<div class="map-item-info clearfix">';
+				if ( has_post_thumbnail() ) :
+					echo '<img class="left wp-image-placeholder" src="' . $branch_photo . '">';
+				else :
+					echo '<img class="wp-image-placeholder" src="' . SP_ASSETS_THEME .'images/placeholder/thumbnail-300x225.gif" width="135" height="90">';	
+				endif;
+				echo '<ul class="branch-info">';
+				echo '<li class="name"><h5>' . get_the_title() . '</h5></li>';
+				echo '<li class="address">' . get_post_meta( get_the_ID(), 'sp_branch_address', true) . '</li>';
+				echo '<li>';
+				echo '<span class="left">' . __('Tel:', SP_TEXT_DOMAIN ) . '</span><span class="right">' . get_post_meta( get_the_ID(), 'sp_branch_tel', true) . '</span>';
+				echo '</li>';
+				echo '<li>';
+				echo '<span class="left">' . __('E-mail:', SP_TEXT_DOMAIN ) . '</span><span class="right"><a href="mailto:' . antispambot(get_post_meta( get_the_ID(), 'sp_branch_email', true)) . '">' . antispambot(get_post_meta( get_the_ID(), 'sp_branch_email', true)) . '</a></span>';
+				echo '</li>';
+				echo '</ul></div>\'';
+				echo ', ' . get_post_meta( get_the_ID(), 'sp_lat_long', true);
+				echo '],';
+			endwhile; wp_reset_postdata();
+			?>	
+		        ];
+				
+				var map = new google.maps.Map(document.getElementById('branch-map'), {
+					  mapTypeId: google.maps.MapTypeId.ROADMAP
+				});
+				
+				var infowindow = new google.maps.InfoWindow();
+				var bounds = new google.maps.LatLngBounds();
+				var marker, i;
+
+				for (i = 0; i < locations.length; i++) {  
+				  marker = new google.maps.Marker({
+					position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+					map: map,
+					travelMode: google.maps.TravelMode["Driving"], //Driving or Walking or Bicycling or Transit
+					animation: google.maps.Animation.DROP,
+				  });
+
+				  bounds.extend(marker.position);
+
+				  google.maps.event.addListener(marker, 'click', (function(marker, i) {
+					return function() {
+					  map.panTo(marker.getPosition());	
+					  infowindow.setContent(locations[i][0]);
+					  infowindow.open(map, marker);
+					}
+				  })(marker, i));
+				
+				    google.maps.event.addListener(map, "click", function(){
+					  infowindow.close();
+					});
+				};
+
+				map.fitBounds(bounds);
+
+				//(optional) restore the zoom level after the map is done scaling
+				var listener = google.maps.event.addListener(map, "idle", function () {
+				    map.setZoom(13);
+				    google.maps.event.removeListener(listener);
+				});
+			});
+		</script>
+		<div id="branch-map"></div>
+
+	<?php
+	}
+}

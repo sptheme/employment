@@ -13,7 +13,9 @@
 		<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 			<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 				
-				<?php if ( !is_front_page() ) : ?>
+				<?php $is_page_title = get_post_meta( $post->ID, 'sp_is_page_title', true ); ?>
+
+				<?php if ( $is_page_title == 'on' ) : ?>
 				<header class="entry-header">
 					<h1 class="entry-title"><?php the_title(); ?></h1>
 				</header>

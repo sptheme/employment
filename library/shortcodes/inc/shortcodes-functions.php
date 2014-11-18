@@ -34,9 +34,10 @@ function sp_add_shortcodes() {
 	add_shortcode( 'toggle_section', 'sp_toggle_section_shortcode' );	
 	add_shortcode( 'tabgroup', 'sp_tabgroup_shortcode' );
 	add_shortcode( 'tab', 'sp_tab_shortcode' );
-	add_shortcode( 'slider', 'sp_slider_sc' );
-	add_shortcode( 'sc_gallery', 'sp_gallery_sc' );
-	add_shortcode( 'testimonial', 'sp_testimonial_sc' );
+	// add_shortcode( 'slider', 'sp_slider_sc' );
+	// add_shortcode( 'sc_gallery', 'sp_gallery_sc' );
+	// add_shortcode( 'testimonial', 'sp_testimonial_sc' );
+	add_shortcode( 'branch', 'sp_branch_sc' );
 	add_shortcode( 'team', 'sp_team_sc' );
 	add_shortcode( 'partner', 'sp_partner_sc' );
 	add_shortcode( 'featured_page', 'sp_featured_page_sc' );
@@ -403,6 +404,19 @@ function sp_homeslider_sc( $atts, $content = null ){
 	return $out;
 }
 
+/*--------------------------------------------------------------------------------------*/
+/* Branch shortcode
+/*--------------------------------------------------------------------------------------*/
+function sp_branch_sc( $atts, $content = null ){
+
+	extract( shortcode_atts( array(
+		'category_id' => null,
+		'numberposts' => null
+	), $atts ) );
+
+	return map_branch_by_location( $category_id, $numberposts );
+
+}
 
 
 
