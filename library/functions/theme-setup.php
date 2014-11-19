@@ -202,7 +202,7 @@ function sp_gallery_atts( $out, $pairs, $atts ) {
 	'size' => 'post-gallery',
 	), $atts );
 	 
-	$out['columns'] = $atts['columns'];
+	//$out['columns'] = $atts['columns'];
 	$out['size'] = $atts['size'];
 	 
 	return $out;
