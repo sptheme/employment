@@ -15,9 +15,9 @@
 			while ( have_posts() ) : the_post(); 
 		?>
 
-				<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-					
-						<div class="one-third">
+				<article id="post-<?php the_ID(); ?>" class="post">
+					<div class="clearfix">
+						<div class="one-third sp-post-team-thumb">
 						<?php echo sp_single_team_html( $post->ID, 'large' ); ?>
 						</div>
 						
@@ -31,7 +31,7 @@
 							<?php the_content(); ?>
 							</div><!-- .entry-content -->
 						</div>	
-
+					</div> <!-- .clearfix -->
 				</article><!-- #post -->
 
 				<?php if ( ot_get_option('social_share') != 'off' ) { get_template_part('library/contents/social-share'); } ?>
