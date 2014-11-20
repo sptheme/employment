@@ -850,7 +850,7 @@ if ( !function_exists('sp_switch_posttype_content') ) {
 	function sp_switch_posttype_content( $post_id, $post_type ) {
 
 		if ( $post_type == 'team' ) {
-			$out = sp_render_team_post( $post_id, 'medium', 'hover-1' );
+			$out = sp_render_team_post( $post_id, 'medium' );
 		} elseif ( $post_type == 'partner' ) {
 			$out = sp_render_partner_post( $post_id, 'medium' );	
 		} elseif ( $post_type == 'gallery' ) {
