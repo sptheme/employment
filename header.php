@@ -41,8 +41,12 @@
         <div class="inner-content-container">
         <div class="top-bar">
             <div class="contact-bar">
-                <span class="tel">+855 (0) 23 72 22 50</span>
-                <span class="email"><a href="mailto:info@kctcmanpower.com">info@kctcmanpower.com</a></span>
+                <?php if ( ot_get_option( 'phone' ) ): ?>
+                <span class="tel"><?php echo ot_get_option( 'phone' ); ?></span>
+                <?php endif; ?>
+                <?php if ( ot_get_option( 'email' ) ): ?>
+                <span class="email"><a href="mailto:<?php echo antispambot(ot_get_option( 'email' )); ?>"><?php echo antispambot(ot_get_option( 'email' )); ?></a></span>
+                <?php endif; ?>
             </div>
         </div> <!-- /.top-bar -->
 

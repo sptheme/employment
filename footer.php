@@ -11,14 +11,12 @@
                 <?php endif; ?>
             </p><!--/.copyright-->
             
-            <?php if ( ot_get_option( 'credit' ) != 'off' ): ?>
-            <p class="credit"><?php echo ot_get_option( 'credit-text' ); ?></p><!--/#credit-->
-            <?php endif; ?><!--/#credit-->
-            
         </div><!-- .container .clearfix -->
     </footer><!-- #footer -->
     </div> <!-- .inner-content-container -->
-    <p class="container licensed">Registered Details: KCTC is a duly authorized and licensed recruitment agency in the Cambodia. License No.Co.1098E in April 2014</p>
+    <?php if ( ot_get_option( 'is-lisence' ) != 'off' ): ?>
+    <p class="container licensed"><?php echo ot_get_option( 'lisence-msg' ); ?></p>
+    <?php endif; ?>
     </div> <!-- #content-container -->
 </div> <!-- #wrapper -->
     

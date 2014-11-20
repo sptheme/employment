@@ -86,6 +86,20 @@ function custom_theme_options() {
 			'type'		=> 'on-off',
 			'section'	=> 'general'
 		),
+		array(
+			'id'		=> 'phone',
+			'label'		=> 'Phone',
+			'desc'		=> 'e.g: +855 (0) 23 72 22 50',
+			'type'		=> 'text',
+			'section'	=> 'general'
+		),
+		array(
+			'id'		=> 'email',
+			'label'		=> 'Email',
+			'desc'		=> 'e.g: info@kctcmanpower.com',
+			'type'		=> 'text',
+			'section'	=> 'general'
+		),
 		
 		// Blog: Excerpt Length
 		array(
@@ -254,27 +268,27 @@ function custom_theme_options() {
 			'id'		=> 'copyright',
 			'label'		=> 'Footer Copyright',
 			'desc'		=> 'Replace the footer copyright text',
-			'std'		=> 'WP Theme Testing © 2014. All Rights Reserved.',
+			'std'		=> 'KCTC Manpower Supply Co Ltd., © 2014 All Right Reserved.',
 			'type'		=> 'text',
 			'section'	=> 'footer'
 		),
 		// Footer: Credit
 		array(
-			'id'		=> 'credit',
-			'label'		=> 'Footer Credit',
-			'desc'		=> 'Footer credit text',
+			'id'		=> 'is-lisence',
+			'label'		=> 'Lisence text',
+			'desc'		=> 'Option to show and hide lisence message',
 			'std'		=> 'on',
 			'type'		=> 'on-off',
 			'section'	=> 'footer'
 		),
 		array(
-			'id'		=> 'credit-text',
-			'label'		=> 'Credit by',
-			'desc'		=> 'Replace the credit text',
-			'std'		=> 'Powered by <a rel="nofollow" href="http://wordpress.org">WordPress</a>. Theme by <a rel="nofollow" href="http://www.novacambodia.com">Nova Cambodia</a>.',
+			'id'		=> 'lisence-msg',
+			'label'		=> 'Lisence message',
+			'desc'		=> '',
+			'std'		=> 'Registered Details: KCTC is a duly authorized and licensed recruitment agency in the Cambodia. License No.Co.1098E in April 2014',
 			'type'		=> 'text',
 			'section'	=> 'footer',
-			'condition' => 'credit:is(on)'
+			'condition' => 'is-lisence:is(on)'
 		),
 		// Layout : Global
 		array(
