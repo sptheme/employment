@@ -35,7 +35,8 @@
 		// but well, this gets the job done nonetheless
 		var options = { 
 			'category_id' : null,
-			'numberposts' : null
+			'numberposts' : null,
+			'style' : null
 			};
 		var shortcode = '[team';
 		

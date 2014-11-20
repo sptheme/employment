@@ -772,7 +772,7 @@ if ( ! function_exists( 'sp_show_social_icons' ) ) {
 /*  Get post type and render content style
 /* ---------------------------------------------------------------------- */
 if ( !function_exists('sp_get_posts_type') ) {
-	function sp_get_posts_type( $post_type = 'post', $args=array() ) {
+	function sp_get_posts_type( $post_type = 'post', $args=array(), $style = '' ) {
 
 		$defaults = array(
 				'post_type' => $post_type,
@@ -786,7 +786,7 @@ if ( !function_exists('sp_get_posts_type') ) {
 		if ( $custom_query->have_posts() ):
 			$out = '<div class="sp-post-' . $post_type . ' col-3">';
 			while ( $custom_query->have_posts() ) : $custom_query->the_post();
-				$out .= sp_switch_posttype_content( get_the_ID(), $post_type );
+				$out .= sp_switch_posttype_content( get_the_ID(), $post_type, $style );
 			endwhile;
 			wp_reset_postdata();
 			$out .= '</div>';
@@ -800,7 +800,7 @@ if ( !function_exists('sp_get_posts_type') ) {
 /*  Get post related by post type
 /* ---------------------------------------------------------------------- */
 if ( !function_exists('sp_get_related_posts') ) {
-	function sp_get_related_posts( $post_id, $args=array() ) {
+	function sp_get_related_posts( $post_id, $args=array(), $style = '' ) {
 
 		$post = get_post($post_id);
 		$post_type = $post->post_type;
@@ -826,7 +826,7 @@ if ( !function_exists('sp_get_related_posts') ) {
 		$custom_query = new WP_Query($args);
 
 		if ( $custom_query->have_posts() ):
-			$out = '<section class="related-posts sp-post-' . $post_type . '">';
+			$out = '<section class="related-posts clearfix sp-post-' . $post_type . '">';
 			$out .= '<h4 class="heading">' . __('Related post...', SP_TEXT_DOMAIN) . '</h4>';
 			$out .= '<div class="sp-post-' . $post_type . ' col-3 clearfix">';
 			while ( $custom_query->have_posts() ) : $custom_query->the_post();
@@ -847,10 +847,10 @@ if ( !function_exists('sp_get_related_posts') ) {
 /*  Switch post type content
 /* ---------------------------------------------------------------------- */
 if ( !function_exists('sp_switch_posttype_content') ) {
-	function sp_switch_posttype_content( $post_id, $post_type ) {
+	function sp_switch_posttype_content( $post_id, $post_type, $style = '' ) {
 
 		if ( $post_type == 'team' ) {
-			$out = sp_render_team_post( $post_id, 'medium' );
+			$out = sp_render_team_post( $post_id, 'medium', $style );
 		} elseif ( $post_type == 'partner' ) {
 			$out = sp_render_partner_post( $post_id, 'medium' );	
 		} elseif ( $post_type == 'gallery' ) {

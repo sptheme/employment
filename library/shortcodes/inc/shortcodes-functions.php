@@ -311,6 +311,7 @@ function sp_team_sc( $atts, $content = null ){
 	extract( shortcode_atts( array(
 		'category_id' => null,
 		'numberposts' => null,
+		'style' => null
 	), $atts ) );
 
 	if ( $category_id == 'all') {
@@ -327,7 +328,7 @@ function sp_team_sc( $atts, $content = null ){
 				'posts_per_page' => $numberposts
 			);
 	}
-	$out = sp_get_posts_type( 'team', $args );
+	$out = sp_get_posts_type( 'team', $args, $style );
 
 	return $out;
 

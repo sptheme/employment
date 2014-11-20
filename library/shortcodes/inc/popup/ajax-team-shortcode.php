@@ -28,6 +28,16 @@ function sp_team_shortcode_ajax(){
 					</td>
 				</tr>
 				<tr>
+					<?php $field = 'style'; ?>
+					<th><label for="<?php echo $field; ?>"><?php _e( 'Select style', 'sptheme_admin' ); ?></label></th>
+					<td>
+						<select name="<?php echo $field; ?>" id="<?php echo $field; ?>">
+							<option value="" selected><?php _e( 'Defualt', 'sptheme_admin' ); ?></option>
+							<option value="hover-1" selected><?php _e( 'Hover Effect', 'sptheme_admin' ); ?></option>
+						</select>
+					</td>
+				</tr>
+				<tr>
 					<?php $field = 'numberposts'; ?>
 					<th><label for="<?php echo $field; ?>"><?php _e( 'Number of people', 'sptheme_admin' ); ?></label></th>
 					<td>
