@@ -33,9 +33,12 @@
 					<div class="entry-content">
 						<?php the_content(); ?>
 					</div><!-- .entry-content -->
-					<?php if ( ot_get_option('social_share') != 'off' ) { get_template_part('library/contents/social-share'); } ?>
-
+					
 				</article><!-- #post -->
+
+				<?php if ( ot_get_option('social_share') != 'off' ) { get_template_part('library/contents/social-share'); } ?>
+
+				<div class="clear"></div>
 
 				<?php if ( ot_get_option( 'related-posts' ) != '1' ) { 
 					echo sp_get_related_posts( $post->ID, array('posts_per_page' => 3) ); 
