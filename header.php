@@ -73,7 +73,7 @@
                 <?php echo sp_main_navigation(); ?>
             </nav><!-- .primary-nav .wrap -->
 
-            <?php echo languages_list_header(); ?>
+            <?php if ( ot_get_option( 'icl_switcher' ) != 'off' ) echo languages_list_header(); ?>
             
 		</div><!-- end .container .clearfix -->
         </header><!-- end #header -->

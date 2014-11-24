@@ -87,6 +87,14 @@ function custom_theme_options() {
 			'section'	=> 'general'
 		),
 		array(
+			'id'		=> 'icl_switcher',
+			'label'		=> 'Language switcher in header',
+			'desc'		=> 'Show and hide language switcher in header',
+			'std'		=> 'on',
+			'type'		=> 'on-off',
+			'section'	=> 'general'
+		),
+		array(
 			'id'		=> 'phone',
 			'label'		=> 'Phone',
 			'desc'		=> 'e.g: +855 (0) 23 72 22 50',
