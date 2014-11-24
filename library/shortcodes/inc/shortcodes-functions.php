@@ -354,7 +354,7 @@ function sp_partner_sc( $atts, $content = null ){
 					array(
 						'taxonomy' => 'partner-category',
 						'field'    => 'id',
-						'terms'    => $category_id,
+						'terms'    => array($category_id),
 					)
 				),
 				'posts_per_page' => $numberposts
