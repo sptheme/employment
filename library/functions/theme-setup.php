@@ -85,6 +85,13 @@ if( !function_exists('sp_frontend_scripts_styles') )
 			wp_enqueue_script('mobile-menu', SP_ASSETS_THEME . 'js/mobile-menu.js', array('jquery'), SP_SCRIPTS_VERSION, true);
 		}
 
+		if (function_exists('icl_get_languages')) {
+			if ( strtolower(ICL_LANGUAGE_CODE) == 'kh') {
+				wp_enqueue_style('khmer-gfont', 'http://fonts.googleapis.com/css?family=Khmer', false, SP_SCRIPTS_VERSION);
+				wp_enqueue_style('kh', SP_ASSETS_THEME . 'css/kh.css', false, SP_SCRIPTS_VERSION);
+			}
+		}
+
 		wp_localize_script(
 			'custom', 
 			'theme_objects',
@@ -238,6 +245,23 @@ if ( !function_exists('sp_browser_body_class') ) {
 	        return $classes;
 	}
 	add_filter('body_class','sp_browser_body_class');
+}
+
+/* ---------------------------------------------------------------------- */
+/*	Add Language code Classes in Body Class
+/* ---------------------------------------------------------------------- */
+if ( !function_exists('sp_lang_code_body_class') ) {
+	function sp_lang_code_body_class($classes) {
+	        
+	        if (function_exists('icl_get_languages')) {   
+	        	if(strtolower(ICL_LANGUAGE_CODE) == 'kh'){
+			    	$classes[] = 'kh';
+			  	}
+			} 
+			
+	        return $classes;
+	}
+	add_filter('body_class','sp_lang_code_body_class');
 }
 
 /* ---------------------------------------------------------------------- */

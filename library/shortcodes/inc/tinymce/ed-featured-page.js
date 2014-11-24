@@ -6,7 +6,7 @@
      tinymce.create( 'tinymce.plugins.featured_page', {
         init : function( ed, url ) {
              ed.addButton( 'featured_page', {
-                title : 'Insert slideshow',
+                title : 'Insert Featred Page',
                 image : url + '/ed-icons/featured_page.png',
                 onclick : function() {
 						var width = jQuery( window ).width(), H = jQuery( window ).height(), W = ( 720 < width ) ? 720 : width;
