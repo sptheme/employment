@@ -615,7 +615,7 @@ if ( ! function_exists( 'sp_last_posts_cat' ) ) {
 			$out .= '<a href="' . get_permalink() . '" class="clearfix">';
 			if ( $thumb ) :
 				if ( has_post_thumbnail() ) {
-					$out .= get_the_post_thumbnail();
+					$out .= get_the_post_thumbnail( $post->ID, 'medium');
 				} else {
 					$out .= '<img class="wp-image-placeholder" src="' . SP_ASSETS_THEME .'images/placeholder/thumbnail-300x225.gif">';	
 				}

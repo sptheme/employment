@@ -400,7 +400,7 @@ function sp_homeslider_sc( $atts, $content = null ){
 	), $atts ) );
 
 	//Start the loop
-    $args = array( 'posts_per_page' => $slide_num, 'post_type' => 'home_slider' );
+    $args = array( 'posts_per_page' => $slide_num, 'post_type' => 'home_slider', 'suppress_filters' => false );
     $out = sp_get_homeslider_post( $args );
 
 	return $out;
