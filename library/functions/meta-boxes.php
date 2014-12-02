@@ -207,7 +207,7 @@ $post_type_branch = array(
 			'label'		=> 'E-mail',
 			'id'		=> $prefix . 'branch_email',
 			'type'		=> 'text',
-			'desc'		=> 'e.g. info@seilanithih.com.kh'
+			'desc'		=> 'e.g. info@domainname.com'
 		),
 	)
 );

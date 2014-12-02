@@ -18,8 +18,8 @@ function sp_shortcodes_register_mce_button_3( $buttons ) {
 	array_push( $buttons, 'tab' );
 	array_push( $buttons, 'branch' );
 	array_push( $buttons, 'featured_page' );
-	array_push( $buttons, 'partner' );
-	array_push( $buttons, 'team' );
+	// array_push( $buttons, 'partner' );
+	// array_push( $buttons, 'team' );
 
     return $buttons;
 }
@@ -61,8 +61,8 @@ function sp_shortcodes_add_tinymce_plugin($plugin_array) {
 	$plugin_array['tab']			= ED_JS_URL . 'ed-tab.js';
 	$plugin_array['branch']			= ED_JS_URL . 'ed-branch.js';
 	$plugin_array['featured_page']	= ED_JS_URL . 'ed-featured-page.js';
-	$plugin_array['partner']		= ED_JS_URL . 'ed-partner.js';
-	$plugin_array['team']			= ED_JS_URL . 'ed-team.js';
+	// $plugin_array['partner']		= ED_JS_URL . 'ed-partner.js';
+	// $plugin_array['team']			= ED_JS_URL . 'ed-team.js';
 	
     return $plugin_array;
 }
